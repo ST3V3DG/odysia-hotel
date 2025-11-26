@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ReactNode } from "react";
-import localFont from 'next/font/local';
-import { ThemeProvider } from "@/providers/theme-provider"
- 
+import localFont from "next/font/local";
+import { ThemeProvider } from "@/providers/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
+
 const khand = localFont({
-  src: '../public/fonts/Khand-Bold.woff2',
+  src: "../public/fonts/Khand-Bold.woff2",
 });
 
 const switzer = localFont({
-  src: '../public/fonts/Switzer-Regular.woff2',
+  src: "../public/fonts/Switzer-Regular.woff2",
 });
 
 export const metadata: Metadata = {
@@ -24,16 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html className="scroll-smooth" lang="en" suppressHydrationWarning>
-      <body
-        className={`${khand.className} ${switzer.className} antialiased`}
-      >
+      <body className={`${khand.className} ${switzer.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-        {children}
+          {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
