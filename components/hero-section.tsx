@@ -78,19 +78,19 @@ export default function HeroSection() {
       scrollTrigger: {
         trigger: "#hero",
         start: "bottom 95%",
-        end: "bottom 99%",
+        end: "bottom center",
         scrub: 1,
       },
     })
     .to(splitHeroSpan2.lines, {
       y: -100,
       autoAlpha: 0,
-      stagger: 0.5,
+      stagger: 0.05,
       ease: "power3.inOut",
       scrollTrigger: {
         trigger: "#hero",
         start: "bottom 95%",
-        end: "bottom 85%",
+        end: "bottom center",
         scrub: 1,
       },
     });
@@ -122,7 +122,7 @@ export default function HeroSection() {
                 <span
                   className=" font-extrabold text-6xl md:text-9xl md:leading-30 tracking-tighter"
                 >
-                  TRY SOMTHING NEW
+                  TRY SOMETHING NEW
                 </span>
               </h1>
               <p
