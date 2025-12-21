@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const khand = localFont({
   src: "../public/fonts/Khand-Bold.woff2",
@@ -34,6 +35,7 @@ export default function RootLayout({
         >
           {children}
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
