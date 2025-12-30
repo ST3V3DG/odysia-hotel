@@ -176,8 +176,6 @@ export default function Header({
   }, []);
 
   useGSAP(() => {
-
-
     gsap.to("#header", {
       opacity: 1,
       delay: 3.6,
