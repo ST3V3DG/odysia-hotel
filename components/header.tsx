@@ -51,7 +51,7 @@ type NavbarProps = {
   menu?: MenuItem[];
 }
 
-export default function Header({  
+export default function Header({
   logo = {
     url: "#",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/avatar-4.webp",
@@ -156,34 +156,36 @@ export default function Header({
   ],
 }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
- 
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY > 0) {
-				setScrolled(true);
-			} else {
-				setScrolled(false);
-			}
-		};
- 
-		handleScroll();
- 
-		window.addEventListener("scroll", handleScroll);
- 
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
-	
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   useGSAP(() => {
-    gsap.from("#header", {
-      opacity: 0,
-      delay: 3.6  ,
+
+
+    gsap.to("#header", {
+      opacity: 1,
+      delay: 3.6,
     });
   });
-  
+
   return (
-    <header id="header" className="py-2 bg-background sticky top-0 w-full z-20">
+    <header id="header" className="py-2 bg-background sticky top-0 w-full z-20 opacity-0">
       <div className="mx-auto max-w-5xl px-6">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">

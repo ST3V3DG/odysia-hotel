@@ -1,7 +1,7 @@
 "use client";
+
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitText from "gsap/SplitText";
@@ -20,85 +20,86 @@ export default function HeroSection() {
       type: "lines, words",
     });
 
-    tl.from(".hero-grid", {
-      scale: 0.1,
+    tl.to(".hero-grid", {
+      scale: 1,
+      opacity: 1,
       duration: 2,
       ease: "power3.inOut",
     })
-    .from(splitHeroSpan1.words, {
-      y: 50,
-      opacity: 0,
-    })
-    .from(splitHeroSpan2.words, {
-      y: 100,
-      duration: 1,
-      autoAlpha: 0,
-      stagger: 0.2,
-      ease: "power3.inOut",
-    },
-    "<0.2")
-    .from("#hero p", {
-      opacity: 0,
-      duration: 1,
-    })
-    .from("#hero > div:last-child > div > div > div:first-child div:has(button)", {
-      opacity: 0,
-      duration: 1,
-    },
-    "<")
-    .from("#hero > div:last-child > div > div > div:last-child", {
-      opacity: 0,
-      duration: 1,
-    },
-    "<")
-    .to("#hero > div:last-child > div > div", {
-      y: -100,
-      scrollTrigger: {
-        trigger: "#hero",
-        endTrigger: "#hero",
-        scrub: 1,
-        start: "bottom 99%",
-        end: "bottom 80%",
+      .from(splitHeroSpan1.words, {
+        y: 50,
+        opacity: 0,
+      })
+      .from(splitHeroSpan2.words, {
+        y: 100,
+        duration: 1,
+        autoAlpha: 0,
+        stagger: 0.2,
+        ease: "power3.inOut",
       },
-    })
-    .to("#hero img", {
-      y: -200,
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "bottom 95%",
-        end: "bottom center",
-        scrub: 1,
+        "<0.2")
+      .from("#hero p", {
+        opacity: 0,
+        duration: 1,
+      })
+      .from("#hero > div:last-child > div > div > div:first-child div:has(button)", {
+        opacity: 0,
+        duration: 1,
       },
-    })
-    .to(splitHeroSpan1.lines, {
-      y: -50,
-      autoAlpha: 0,
-      stagger: 1,
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "bottom 95%",
-        end: "bottom center",
-        scrub: 1,
+        "<")
+      .from("#hero > div:last-child > div > div > div:last-child", {
+        opacity: 0,
+        duration: 1,
       },
-    })
-    .to(splitHeroSpan2.lines, {
-      y: -100,
-      autoAlpha: 0,
-      stagger: 0.05,
-      ease: "power3.inOut",
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "bottom 95%",
-        end: "bottom center",
-        scrub: 1,
-      },
-    });
+        "<")
+      .to("#hero > div:last-child > div > div", {
+        y: -100,
+        scrollTrigger: {
+          trigger: "#hero",
+          endTrigger: "#hero",
+          scrub: 1,
+          start: "bottom 99%",
+          end: "bottom 80%",
+        },
+      })
+      .to("#hero img", {
+        yPercent: -10,
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "bottom 95%",
+          end: "bottom center",
+          scrub: 1,
+        },
+      })
+      .to(splitHeroSpan1.lines, {
+        yPercent: -50,
+        autoAlpha: 0,
+        stagger: 1,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "bottom 95%",
+          end: "bottom center",
+          scrub: 1,
+        },
+      })
+      .to(splitHeroSpan2.lines, {
+        yPercent: -100,
+        autoAlpha: 0,
+        stagger: 0.05,
+        ease: "power3.inOut",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "bottom 95%",
+          end: "bottom center",
+          scrub: 1,
+        },
+      });
   });
 
   return (
     <section className="px-1 md:px-6" id="hero">
-      <div className="hero-grid grid justify-center rounded-lg overflow-hidden h-[calc(100dvh-80px)]">
+      <div className="hero-grid grid justify-center rounded-lg overflow-hidden h-[calc(100dvh-80px)] scale-10 opacity-0">
         <div className="w-full h-[calc(100%+200px)] col-start-1 row-start-1 -z-1">
           <Image
             alt="Hero image"
